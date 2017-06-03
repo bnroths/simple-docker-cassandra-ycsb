@@ -1,0 +1,6 @@
+java -cp /Users/benjamin/Desktop/cassandra/ycsb-0.12.0/basic-binding/conf:/Users/benjamin/Desktop/cassandra/ycsb-0.12.0/conf:/Users/benjamin/Desktop/cassandra/ycsb-0.12.0/lib/core-0.12.0.jar:/Users/benjamin/Desktop/cassandra/ycsb-0.12.0/lib/HdrHistogram-2.1.4.jar:/Users/benjamin/Desktop/cassandra/ycsb-0.12.0/lib/htrace-core4-4.1.0-incubating.jar:/Users/benjamin/Desktop/cassandra/ycsb-0.12.0/lib/jackson-core-asl-1.9.4.jar:/Users/benjamin/Desktop/cassandra/ycsb-0.12.0/lib/jackson-mapper-asl-1.9.4.jar com.yahoo.ycsb.Client -db com.yahoo.ycsb.BasicDB -P ycsb-0.12.0/workloads/workloadc -t
+YCSB Client 0.12.0
+Command line: -db com.yahoo.ycsb.BasicDB -P ycsb-0.12.0/workloads/workloadc -t
+Loading workload...
+Starting test.
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
