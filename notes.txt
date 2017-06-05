@@ -1,0 +1,7 @@
+Read performances can also be enhanced by fine tuning the Concurrent Reads, usually the rule is 4 threads per CPU core in the cluster. The higher the values the number of threads spanned for read, if the machines have faster I/O than the usual commodity versions then we can even increase this number a bit. Increasing it too much will in turn cause high context switches and will not yield higher performance gains.
+
+
+Staged Event-Driven Architecture(SEDA) is used for implementing Cassandra. It breaks the application into stages. Concurrent readers and writers control the maximum number of threads allocated to a particular stage. So having an optimal concurrent reads and concurrent writes value will improve Cassandra performance. But raising these values beyond the limit will decrease Cassandra performance. These values are highly tied with CPU cores of the system. As like, Java heap size, there is also a rule of thumb about how to select these values:
+Concurrent Reads: 4 concurrent reads per processor core
+Concurrent Writes: Most of the time you do not need it as write is usually fast. If needed, you can set the value to equal or higher than the concurrent reads.
+To change the value, you need to update conf/cassandra.yaml configuration file. There are two parameters present for these two: ConcurrentReaders and ConcurrentWriters. Update those values based on your system and restart Cassandra to take the effect.

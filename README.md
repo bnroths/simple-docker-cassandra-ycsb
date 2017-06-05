@@ -8,7 +8,7 @@ $ docker build .
 $ docker images
 
 ### run docker image (replace directory with where cassandra.py is)
-$ docker run -v /Users/benjamin/Desktop/cassandra:/scripts -d 0f126bf8ef3e
+$ docker run -v /Users/benjamin/Desktop/simple-docker-cassandra:/scripts -d 0f126bf8ef3e
 
 ### get name
 $ docker ps -a
@@ -18,7 +18,7 @@ docker exec -it [name] bash
 
 ### run test workload
 cd ycsb-0.12.0
-./bin/ycsb load basic -P workloads/workloada 
+
 
 ###  run CQL
 docker run -v /Users/benjamin/Desktop/cassandra:/scripts -it --link some-cassandra:cassandra --rm cassandra sh -c 'exec cqlsh "$CASSANDRA_PORT_9042_TCP_ADDR"'
