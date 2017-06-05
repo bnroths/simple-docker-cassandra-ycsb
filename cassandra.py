@@ -7,7 +7,6 @@ with open("cassandra.yaml", 'r') as stream:
 	print "file opened"
 	yaml_file = yaml.load(stream)
 
-print "HI"
 # a 50/50
 # b 95 read/ 5 write
 # c 100 read
@@ -18,7 +17,6 @@ for read_val in concurrent_reads:
 	yaml_file['concurrent_reads'] = read_val
 	# print yaml_file
 	with open('cassandra.yaml', 'w') as outfile:
-		print("J")
 		yaml.dump(yaml_file, outfile, default_flow_style=False)
 
 	

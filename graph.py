@@ -6,6 +6,7 @@ from res import res
 
 for stat in sorted(res.keys()):
 	xs 		= []
+	zs 		= []
 	ys 		= []
 	ys_err 	= []
 	for read_val in sorted(res[stat].keys()):
@@ -17,8 +18,18 @@ for stat in sorted(res.keys()):
 	ax = fig.add_subplot(111)
 	plt.xscale("log", basex=2)
 	plt.ylim(0, max(ys))
-	plt.errorbar(xs, ys, yerr=ys_err)
+	plt.scatter(xs, ys)
 	ax.set_xlabel("# Concurrent Reads")
 	ax.set_ylabel(stat)
 	
 	plt.savefig("graph_%s.png" % stat)
+
+	# fig = plt.figure()
+	# ax = fig.add_subplot(111)
+	# plt.xscale("log", basex=2)
+	# plt.ylim(0, max(ys))
+	# plt.errorbar(xs, ys, yerr=ys_err)
+	# ax.set_xlabel("# Concurrent Reads")
+	# ax.set_ylabel(stat)
+	
+	# plt.savefig("graph_%s.png" % stat)
