@@ -70,6 +70,7 @@ for read_val in concurrent_reads:
         ## how many runs to do
         for i in range(10):
             print i
+            print "ycsb-0.12.0/workloads/workload%s" % workload
             with open("%s/%s/%s-stdout.txt" % (workload, read_val, i),"wb") as out, open("%s/%s/%s-stderr.txt" % (workload, read_val, i),"wb") as err:
                 p = subprocess.Popen("./ycsb-0.12.0/bin/ycsb run basic -P ycsb-0.12.0/workloads/workload%s" % workload, 
                     shell=True, 
