@@ -62,7 +62,7 @@ for read_val in concurrent_reads:
     subprocess.call(command, shell=False)
 
     print "run workloads"
-    workloads = ["c"]
+    # workloads = ["c"]
     for workload in workloads:
         res[read_val][workload] = {}
         p = subprocess.call("rm -Rf %s/%s" % (workload, read_val), shell=True)
@@ -85,7 +85,7 @@ for read_val in concurrent_reads:
 
                 with open("%s/%s/%s" % (workload, read_val, file), 'r') as f:
                     for line in f.readlines():
-                        if "[READ]" in line or "[UPDATE]":
+                        if "[READ]" in line or "[UPDATE]" in line:
 
                             l   = line.split(', ')
                             key = l[0] + ' - ' + l[1]
