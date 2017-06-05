@@ -10,9 +10,11 @@ skip_lines = ["readproportion", "updateproportion", "scanproportion", "insertpro
 with open('ycsb-0.12.0/workloads/workloada', 'r') as workloadFile:
     lines = []
     for line in workloadFile:
-        for skip_line in skip_lines:
-            if skip_line in line:
-                break
+        if skip_lines[0] in line or skip_lines[1] in line or skip_lines[2] in line or skip_lines[3]:
+            continue
+        # for skip_line in skip_lines:
+        #     if skip_line in line:
+        #         break
         lines.append(line)
 
 workloads = [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
@@ -24,10 +26,10 @@ for workload in workloads:
             output_workload_file.write(line)
         output_workload_file.write('\n')
 
-        output_workload_file.write('readproportion={}'.format(workload))
-        output_workload_file.write('updateproportion={}'.format(1.0-workload))
-        output_workload_file.write('scanproportion=0')
-        output_workload_file.write('insertproportion=0')
+        output_workload_file.write('\nreadproportion={}'.format(workload))
+        output_workload_file.write('\nupdateproportion={}'.format(1.0-workload))
+        output_workload_file.write('\nscanproportion=0')
+        output_workload_file.write('\ninsertproportion=0')
         output_workload_file.write('\n')
 
 
@@ -66,6 +68,7 @@ for read_val in concurrent_reads:
     for workload in workloads:
         res[read_val][workload] = {}
         p = subprocess.call("rm -Rf %s/%s" % (workload, read_val), shell=True)
+        p = subprocess.call("mkdir %s" % (workload), shell=True)
         p = subprocess.call("mkdir %s/%s" % (workload, read_val), shell=True)
         ## how many runs to do
         for i in range(10):
