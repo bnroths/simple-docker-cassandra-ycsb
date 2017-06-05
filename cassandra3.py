@@ -43,7 +43,9 @@ print "HI"
 # c 100 read
 
 res = {}
-concurrent_reads = [4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
+concurrent_reads = [4, 'abc', 16, 32, 64, 128, 256, 512, 1024, 2048]
+
+# concurrent_reads = [4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
 for read_val in concurrent_reads:
     res[read_val] = {}
 
@@ -71,9 +73,9 @@ for read_val in concurrent_reads:
         p = subprocess.call("mkdir %s" % (workload), shell=True)
         p = subprocess.call("mkdir %s/%s" % (workload, read_val), shell=True)
         ## how many runs to do
-        print "ycsb-0.12.0/workloads/workload%s" % workload, 
+        print "ycsb-0.12.0/workloads/workload%s" % workload
         for i in range(10):
-            print ', %s' % i,
+            # print ', %s' % i,
             # print "ycsb-0.12.0/workloads/workload%s" % workload
             with open("%s/%s/%s-stdout.txt" % (workload, read_val, i),"wb") as out, open("%s/%s/%s-stderr.txt" % (workload, read_val, i),"wb") as err:
                 p = subprocess.Popen("./ycsb-0.12.0/bin/ycsb run basic -P ycsb-0.12.0/workloads/workload%s" % workload, 
@@ -82,11 +84,11 @@ for read_val in concurrent_reads:
                     stderr=err)
                 p.communicate()
 
-    
+        
         for file in os.listdir("%s/%s/" % (workload, read_val)):
 
             if file.endswith("out.txt"):
-                print "%s/%s/%s, " % (workload, read_val, file), 
+                # print "%s/%s/%s, " % (workload, read_val, file), 
 
                 with open("%s/%s/%s" % (workload, read_val, file), 'r') as f:
                     for line in f.readlines():
