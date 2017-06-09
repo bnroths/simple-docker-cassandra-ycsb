@@ -27,7 +27,7 @@ for stat in sorted(res1.keys()):
 	# plt.xscale("log", basex=2)
 	# plt.yscale("log", basex=2)
 
-	ax.plot_wireframe(xs, ys, zs, rstride=10, cstride=10)
+	ax.scatter(xs, ys, zs, c='r', marker='o')
 	ax.set_xlabel("# Concurrent Reads")
 	ax.set_ylabel("# Concurrent Write")
 	ax.set_zlabel(stat)

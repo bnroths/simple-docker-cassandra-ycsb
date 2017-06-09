@@ -8,7 +8,7 @@ $ docker build .
 $ docker images
 
 ### run docker image (replace directory with where cassandra.py is)
-$ docker run -v /Users/benjamin/Desktop/simple-docker-cassandra:/scripts -d 0f126bf8ef3e
+$ docker run --ulimit memlock=819200000:819200000 -v /Users/benjamin/Desktop/simple-docker-cassandra:/scripts 0f126bf8ef3e 
 
 ### get name
 $ docker ps -a

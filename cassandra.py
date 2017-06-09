@@ -12,9 +12,10 @@ with open("cassandra.yaml", 'r') as stream:
 # c 100 read
 
 res = {}
-concurrent_reads = [4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
+concurrent_reads = [None, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
+concurrent_reads = [100, 500, 1000, 5000, 10000]
 for read_val in concurrent_reads:
-	yaml_file['concurrent_reads'] = read_val
+	yaml_file['read_request_timeout_in_ms'] = read_val
 	# print yaml_file
 	with open('cassandra.yaml', 'w') as outfile:
 		yaml.dump(yaml_file, outfile, default_flow_style=False)
@@ -30,7 +31,7 @@ for read_val in concurrent_reads:
 	subprocess.call(command, shell=False)
 
 	print "run workloads"
-	workloads = ["c"]
+	workloads = ["a"]
 	for workload in workloads:
 		p = subprocess.call("rm -Rf %s/%s" % (workload, read_val), shell=True)
 		p = subprocess.call("mkdir %s/%s" % (workload, read_val), shell=True)

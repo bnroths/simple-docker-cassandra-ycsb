@@ -1,0 +1,32 @@
+concurrent_reads  					= [32] 
+concurrent_writes 					= [32] 
+read_request_timeout_in_ms 			= [5000]
+compaction_throughput_mb_per_sec 	= [16]  # 2 - 8
+# 1490.8
+res = {}
+concurrent_reads  					= [4, 256, 2048] 
+concurrent_writes 					= [4, 256, 2048] 
+read_request_timeout_in_ms 			= [1000, 5000, 10000]
+compaction_throughput_mb_per_sec 	= [0, 4, 8]  # 2 - 8
+# 1202.0 256-2048-5000-0
+
+
+concurrent_reads  					= [32, 256, 1024] 
+concurrent_writes 					= [256, 1048, 2048] 
+read_request_timeout_in_ms 			= [2500, 5000, 7500]
+compaction_throughput_mb_per_sec 	= [0, 2, 4]  # 2 - 8
+
+# 1132.8 32-2048-2500-0
+
+concurrent_reads  					= [16, 32, 64] 
+concurrent_writes 					= [1600, 2048, 4096] 
+read_request_timeout_in_ms 			= [1250, 2500, 3750]
+compaction_throughput_mb_per_sec 	= [0, 1, 2]  # 2 - 8
+
+# 1041.0 32-1600-2500-1
+concurrent_reads  					= [24, 32, 40] 
+concurrent_writes 					= [1400, 1600, 1800] 
+read_request_timeout_in_ms 			= [2000, 2500, 3000]
+compaction_throughput_mb_per_sec 	= [0, 1, 2]  # 2 - 8
+
+# 1104.0 40-1800-3000-0

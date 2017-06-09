@@ -29,11 +29,11 @@ commitlog_segment_size_in_mb: 32
 commitlog_sync: periodic
 commitlog_sync_period_in_ms: 10000
 compaction_large_partition_warning_threshold_mb: 100
-compaction_throughput_mb_per_sec: 16
+compaction_throughput_mb_per_sec: 8
 concurrent_counter_writes: 32
 concurrent_materialized_view_writes: 32
-concurrent_reads: 16
-concurrent_writes: 2048
+concurrent_reads: 210
+concurrent_writes: 210
 counter_cache_save_period: 7200
 counter_cache_size_in_mb: null
 counter_write_request_timeout_in_ms: 5000
@@ -70,7 +70,7 @@ partitioner: org.apache.cassandra.dht.Murmur3Partitioner
 permissions_validity_in_ms: 2000
 prepared_statements_cache_size_mb: null
 range_request_timeout_in_ms: 10000
-read_request_timeout_in_ms: 5000
+read_request_timeout_in_ms: 2000
 request_scheduler: org.apache.cassandra.scheduler.NoScheduler
 request_timeout_in_ms: 10000
 role_manager: CassandraRoleManager
@@ -101,6 +101,7 @@ start_rpc: false
 storage_port: 7000
 thrift_framed_transport_size_in_mb: 15
 thrift_prepared_statements_cache_size_mb: null
+timeout: 5000
 tombstone_failure_threshold: 100000
 tombstone_warn_threshold: 1000
 tracetype_query_ttl: 86400
